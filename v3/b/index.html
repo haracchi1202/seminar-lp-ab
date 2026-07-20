@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>経営を、次のステージへ。｜経営者のための Claude Code講座（90分・本格ハンズオン）</title>
+<meta name="description" content="経営を、次のステージへ。日本語で話しかけるだけで、実務で使える『動くアプリ』を90分で作って持ち帰る。投資対効果で選ぶ、本格志向の経営者向け少人数ハンズオン。期間限定・先着9,800円（通常19,800円／税込）。登録無料・30秒で友だち追加。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1730;
+    --navy2:#0d1d3d;
+    --panel:#0e1c38;
+    --panel2:#132548;
+    --gold:#f5b942;
+    --gold-d:#c9922b;
+    --ink:#f4f6fb;
+    --sub:#aeb9d1;
+    --sub2:#8492b0;
+    --line:rgba(245,185,66,.28);
+    --line-soft:rgba(255,255,255,.08);
+    --lineg:#06C755;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans JP",sans-serif;
+    background:var(--navy);
+    color:var(--ink);
+    line-height:1.9;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  section{padding:70px 0}
+  .mincho{font-family:"Shippori Mincho",serif;}
+  .nb{white-space:nowrap}
+  .gold{color:var(--gold)}
+
+  .eyebrow{
+    font-size:11px;letter-spacing:.38em;font-weight:700;color:var(--gold);
+    display:block;margin-bottom:18px;text-transform:uppercase;
+  }
+  h2{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(27px,7.2vw,42px);font-weight:800;line-height:1.35;
+    letter-spacing:.01em;margin-bottom:14px;color:var(--ink);
+  }
+  .lead{color:var(--sub);font-size:15px;line-height:2;margin-bottom:34px}
+  .lead small{color:var(--sub2);font-size:12.5px}
+
+  /* 金の細罫線 */
+  .goldrule{height:1px;background:linear-gradient(90deg,transparent,var(--gold-d),transparent);border:0;opacity:.5}
+  .wrap-rule{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+
+  /* ===== HERO（動画背景ファーストビュー） ===== */
+  .hero{
+    position:relative;min-height:96vh;display:flex;align-items:center;
+    overflow:hidden;background:var(--navy);
+  }
+  .hero-video{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center;z-index:0;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(120% 90% at 50% 15%,rgba(10,23,48,.55),rgba(10,23,48,.82) 60%,rgba(6,15,33,.95) 100%),
+      linear-gradient(180deg,rgba(10,23,48,.35) 0%,rgba(10,23,48,.75) 70%,rgba(6,13,28,.97) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;padding:64px 0}
+  .hero .kicker{
+    display:inline-block;font-size:11px;letter-spacing:.26em;font-weight:700;
+    color:var(--gold);border:1px solid var(--line);padding:8px 15px;margin-bottom:26px;
+    background:rgba(10,23,48,.4);border-radius:2px;
+  }
+  .hero h1{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(36px,10.5vw,68px);font-weight:800;line-height:1.18;letter-spacing:.02em;
+    color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.5);
+  }
+  .hero h1 .g{color:var(--gold)}
+  .hero .sub{
+    font-size:clamp(15px,4.2vw,19px);color:#e7ecf7;margin-top:24px;line-height:1.9;font-weight:500;
+    text-shadow:0 1px 14px rgba(0,0,0,.55);
+  }
+  .hero .sub b{font-weight:900;color:#fff}
+  .hero .big90{
+    font-family:"Shippori Mincho",serif;font-weight:800;
+    font-size:clamp(28px,8vw,46px);color:var(--gold);vertical-align:-.06em;
+  }
+
+  .hero-line{display:flex;align-items:center;gap:16px;margin:30px 0 14px}
+  .hero-line::before,.hero-line::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-d),transparent);opacity:.6}
+  .hero-line span{font-size:11px;letter-spacing:.3em;color:var(--gold);font-weight:700}
+
+  /* 価格 */
+  .price .row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .price .was{
+    color:var(--sub);font-size:18px;font-weight:500;
+    text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--gold);
+  }
+  .price .tag{
+    font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--gold);
+    border:1px solid var(--line);padding:3px 9px;border-radius:2px;
+  }
+  .price .now{
+    font-family:"Shippori Mincho",serif;color:#fff;
+    font-size:clamp(50px,15vw,84px);font-weight:800;line-height:1;margin-top:8px;letter-spacing:.01em;
+    text-shadow:0 2px 24px rgba(0,0,0,.5);
+  }
+  .price .now .num{background:linear-gradient(180deg,#ffe9b0,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .price .now small{font-size:.36em;font-weight:700;font-family:"Noto Sans JP",sans-serif;color:#fff;-webkit-text-fill-color:#fff}
+  .price .tax{font-size:14px;color:var(--sub);font-weight:500;margin-left:6px}
+
+  /* CTA ボタン */
+  .cta-btn{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    background:var(--lineg);color:#fff;font-weight:900;font-size:clamp(16px,4.4vw,19px);
+    text-decoration:none;padding:19px 22px;letter-spacing:.02em;border-radius:4px;
+    border:2px solid var(--lineg);transition:background .15s,transform .12s,box-shadow .15s;
+    box-shadow:0 10px 30px rgba(6,199,85,.28);
+  }
+  .cta-btn .lineico{width:24px;height:24px;flex:none}
+  .cta-btn:hover{background:#05a648;border-color:#05a648;box-shadow:0 12px 34px rgba(6,199,85,.4)}
+  .cta-btn:active{transform:scale(.99)}
+  /* ゴールド版（本文中の軽いCTA） */
+  .cta-btn.gold{background:transparent;border-color:var(--gold);color:var(--gold);box-shadow:none}
+  .cta-btn.gold:hover{background:var(--gold);color:var(--navy)}
+  .cta-btn.gold:hover .lineico path{fill:var(--navy)}
+  .cta-micro{
+    font-size:12.5px;color:var(--sub);margin-top:12px;line-height:1.75;
+    display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center;
+  }
+  .cta-micro b{color:var(--gold);font-weight:700}
+  .cta-wrap{margin-top:28px}
+
+  /* ===== 共感（お悩み） ===== */
+  .worry{list-style:none;display:grid;gap:0;border-top:1px solid var(--line-soft)}
+  .worry li{
+    padding:19px 4px 19px 34px;border-bottom:1px solid var(--line-soft);
+    font-weight:700;font-size:15.5px;position:relative;line-height:1.8;color:var(--ink);
+  }
+  .worry li::before{content:"";position:absolute;left:4px;top:28px;width:14px;height:1px;background:var(--gold)}
+  .answer{margin-top:46px;text-align:center}
+  .answer .q{font-size:13px;color:var(--sub);letter-spacing:.05em}
+  .answer .a{
+    font-family:"Shippori Mincho",serif;
+    font-size:clamp(34px,11vw,60px);font-weight:800;line-height:1.24;margin-top:14px;letter-spacing:.02em;color:#fff;
+  }
+  .answer .a .g{color:var(--gold)}
+
+  /* ===== 解決の提示 ===== */
+  .solve{background:var(--navy2);text-align:center;position:relative}
+  .solve .big{
+    font-family:"Shippori Mincho",serif;color:#fff;
+    font-size:clamp(22px,6vw,34px);font-weight:800;line-height:1.55;letter-spacing:.01em;
+  }
+  .solve p{color:var(--sub);font-size:15px;margin-top:24px;line-height:2}
+  .solve .punch{
+    font-family:"Shippori Mincho",serif;font-weight:800;margin-top:28px;color:#fff;
+    font-size:clamp(18px,5vw,26px);line-height:1.6;
+  }
+
+  /* ===== 経営者の算数 ===== */
+  .math-grid{display:grid;gap:0;border-top:1px solid var(--line-soft)}
+  .math-row{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    padding:16px 2px;border-bottom:1px solid var(--line-soft);
+  }
+  .math-row .k{color:var(--sub);font-size:14px;line-height:1.6}
+  .math-row .k small{display:block;color:var(--sub2);font-size:11.5px;font-weight:400}
+  .math-row .v{font-weight:900;font-size:clamp(16px,4.6vw,20px);text-align:right;flex:none;color:var(--ink)}
+  .math-row.hl{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(245,185,66,.05)}
+  .math-row.hl .v{color:var(--gold);font-family:"Shippori Mincho",serif}
+  .math-note{color:var(--sub2);font-size:12.5px;margin-top:16px;line-height:1.8}
+  .math-punch{
+    font-family:"Shippori Mincho",serif;text-align:center;margin-top:32px;color:#fff;
+    font-size:clamp(19px,5.4vw,28px);font-weight:800;line-height:1.6;
+  }
+  .math-punch2{text-align:center;font-size:clamp(15px,4.2vw,19px);font-weight:900;margin-top:12px;line-height:1.7;color:var(--gold)}
+
+  /* ===== 当日やること ===== */
+  .steps{display:grid;gap:0;border-top:1px solid var(--line-soft)}
+  .step{display:flex;gap:20px;align-items:flex-start;padding:22px 2px;border-bottom:1px solid var(--line-soft)}
+  .step .n{
+    flex:none;font-family:"Shippori Mincho",serif;font-weight:800;font-size:26px;
+    color:var(--gold);width:44px;line-height:1;
+  }
+  .step .n small{display:block;font-size:10px;letter-spacing:.2em;color:var(--sub2);font-family:"Noto Sans JP",sans-serif;font-weight:700;margin-top:4px}
+  .step h4{font-size:17px;font-weight:900;margin-bottom:4px;color:var(--ink)}
+  .step p{font-size:14px;color:var(--sub);line-height:1.9}
+
+  /* ===== モックアップ表示 ===== */
+  .mock{
+    margin:6px 0 6px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.5);position:relative;background:var(--panel);
+  }
+  .mock img{width:100%;display:block}
+  .mock-cap{color:var(--sub2);font-size:12px;text-align:center;margin-top:12px;line-height:1.7}
+
+  /* ===== 作れるアプリの具体例 ===== */
+  .apps{display:grid;gap:0;border-top:1px solid var(--line-soft);margin-top:30px}
+  .app{padding:20px 4px 20px 2px;border-bottom:1px solid var(--line-soft)}
+  .app b{display:block;font-size:15.5px;font-weight:900;color:var(--ink);line-height:1.6}
+  .app b::before{content:"◆ ";color:var(--gold);font-size:.8em}
+  .app span{display:block;font-size:13px;color:var(--sub);margin-top:4px;line-height:1.85;padding-left:1.3em}
+  .apps-note{color:var(--sub2);font-size:12.5px;margin-top:16px;line-height:1.8}
+
+  /* ===== 講師 ===== */
+  .profile{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .profile img{
+    width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:center;
+    border:2px solid var(--gold);flex:none;box-shadow:0 0 0 4px rgba(245,185,66,.12);
+  }
+  .profile .role{font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:700}
+  .profile .name{font-family:"Shippori Mincho",serif;font-size:27px;font-weight:800;margin:4px 0 6px;color:#fff}
+  .profile .name small{font-size:14px;color:var(--sub);font-weight:500;margin-left:8px;font-family:"Noto Sans JP",sans-serif}
+  .profile .catch{font-weight:900;font-size:16px;line-height:1.6;color:var(--ink)}
+  .profile .catch .g{color:var(--gold)}
+  .profile blockquote{
+    color:var(--sub);font-size:14.5px;border-left:2px solid var(--gold);padding-left:16px;margin-top:22px;line-height:2;
+  }
+
+  /* ===== FAQ ===== */
+  .faq{display:grid;gap:0;border-top:1px solid var(--line-soft)}
+  .faq details{border-bottom:1px solid var(--line-soft)}
+  .faq summary{
+    list-style:none;cursor:pointer;padding:20px 34px 20px 4px;position:relative;
+    font-weight:900;font-size:15px;line-height:1.7;color:var(--ink);
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"Q";color:var(--gold);font-family:"Shippori Mincho",serif;font-weight:800;margin-right:10px}
+  .faq summary::after{
+    content:"＋";position:absolute;right:4px;top:20px;color:var(--gold);font-weight:700;font-size:16px;transition:transform .15s;
+  }
+  .faq details[open] summary::after{content:"－"}
+  .faq .a{padding:0 4px 22px 4px;color:var(--sub);font-size:14px;line-height:1.95}
+
+  /* ===== 開催概要 ===== */
+  .outline dl{display:grid;grid-template-columns:96px 1fr;gap:0;border-top:1px solid var(--line-soft)}
+  .outline dt{font-weight:900;padding:18px 12px 18px 2px;border-bottom:1px solid var(--line-soft);font-size:13.5px;letter-spacing:.05em;color:var(--gold)}
+  .outline dd{padding:18px 2px 18px 12px;border-bottom:1px solid var(--line-soft);font-weight:700;font-size:14.5px;line-height:1.8;color:var(--ink)}
+  .outline dd small{color:var(--sub2);font-weight:400;font-size:12.5px}
+  .outline dd .g{color:var(--gold)}
+
+  /* ===== 限定・緊急性 ===== */
+  .urgent{background:var(--navy2);text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .urgent .badge{
+    display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:.15em;
+    font-weight:700;padding:6px 13px;margin-bottom:20px;border-radius:2px;
+  }
+  .urgent .big{
+    font-family:"Shippori Mincho",serif;color:#fff;
+    font-size:clamp(22px,6vw,32px);font-weight:800;line-height:1.5;
+  }
+  .urgent .big .g{color:var(--gold);font-size:1.05em}
+  .urgent p{color:var(--sub);font-size:14.5px;margin-top:20px;line-height:2}
+
+  /* ===== 申込CTA（最終） ===== */
+  .cta-final{background:linear-gradient(180deg,var(--navy2),#06101f)}
+  .cta-final .eyebrow{color:var(--gold)}
+  .flow{display:grid;gap:0;margin:8px 0 8px;border-top:1px solid var(--line-soft)}
+  .flow .fstep{display:flex;gap:18px;align-items:flex-start;padding:20px 2px;border-bottom:1px solid var(--line-soft)}
+  .flow .fstep .n{
+    flex:none;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--navy);
+    font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px;
+  }
+  .flow .fstep p{font-size:14.5px;font-weight:900;color:#fff;line-height:1.6}
+  .flow .fstep p small{display:block;color:var(--sub);font-weight:400;font-size:12.5px;margin-top:4px;line-height:1.8}
+
+  footer{text-align:center;padding:44px 0;color:var(--sub2);font-size:12px;line-height:2;background:#06101f;border-top:1px solid var(--line-soft)}
+  footer b{color:var(--sub);font-weight:700}
+
+  /* スマホ追従バー */
+  .sticky{
+    position:fixed;left:0;right:0;bottom:0;z-index:60;padding:9px 16px;
+    background:rgba(8,17,36,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:none;
+  }
+  .sticky .barwrap{max-width:var(--maxw);margin:0 auto}
+  .sticky .barmicro{text-align:center;font-size:11px;color:var(--sub);margin-bottom:6px;font-weight:700}
+  .sticky .barmicro b{color:var(--gold)}
+  @media(max-width:820px){.sticky{display:block}body{padding-bottom:108px}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. HERO（動画背景ファーストビュー） ============ -->
+<header class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto"
+         poster="https://haracchi1202.github.io/seminar-lp-ab/v3/assets/b_ai_abstract.jpg">
+    <source src="https://haracchi1202.github.io/seminar-lp-ab/v3/assets/b_hero_video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="kicker">経営者のための Claude Code講座</span>
+      <h1>経営を、<br><span class="g">次のステージへ。</span></h1>
+
+      <p class="sub">
+        むずかしいことは、<b>全部AIがやります</b>。<br>
+        あなたは <span class="big90">90分</span>、手を動かすだけ。<br>
+        <span class="nb">動くアプリ</span>を作って、その日に持ち帰る。
+      </p>
+
+      <div class="hero-line"><span>参加費</span></div>
+
+      <div class="price">
+        <div class="row">
+          <span class="was">通常 19,800円</span>
+          <span class="tag">期間限定・先着</span>
+        </div>
+        <div class="now"><span class="num">9,800</span><small>円</small><span class="tax">（税込）</span></div>
+      </div>
+
+      <div class="cta-wrap">
+        <a class="cta-btn" href="https://lin.ee/WjrbAkT" target="_blank" rel="noopener">
+          <svg class="lineico" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.33.07.77.22.88.5.1.26.06.66.03.92l-.14.86c-.04.26-.2 1.02.89.56s5.88-3.46 8.02-5.93C21.36 13.4 22 11.83 22 10.13 22 5.64 17.52 2 12 2z"/></svg>
+          LINEで申し込む（友だち追加）
+        </a>
+        <p class="cta-micro"><b>登録無料・30秒で友だち追加</b>／まずは追加だけでOK・支払いは後から</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 2. 共感（こんなお悩みありませんか？） ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">For You</span>
+    <h2>こんなお悩み、<br>ありませんか？</h2>
+    <p class="lead">ひとつでも当てはまったら、この90分はあなたのためのものです。</p>
+    <ul class="worry">
+      <li>AIが大事なのはわかる。でも「何から手をつければいいのか」がわからない。</li>
+      <li>外注に頼むと高い。見積もりを見るたびに手が止まる。</li>
+      <li>社員の貴重な時間が、転記・集計・報告メールといった雑務に溶けている。</li>
+      <li>「勉強しなきゃ」と本を買ったが、忙しくて結局そのまま。</li>
+      <li>パソコンやプログラミングは苦手。自分には無理だと思っている。</li>
+    </ul>
+    <div class="answer">
+      <p class="q">——答えは、たったひとつ。</p>
+      <p class="a">覚えるより、<br><span class="g">まず動く。</span></p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap-rule"><hr class="goldrule"></div>
+
+<!-- ============ 3. 解決の提示 ============ -->
+<section class="solve">
+  <div class="wrap">
+    <p class="big">
+      勉強しなくていい。<br>
+      むずかしいことは、<br>全部AIがやる<span class="gold">。</span>
+    </p>
+    <p>
+      これは「AIの使い方を覚える講座」ではありません。<br>
+      覚えることを、思いきり削ぎ落としました。<br>
+      あなたがやるのは、<span class="nb">日本語で話しかけること</span>だけ。<br>
+      あとは <span class="nb">Claude Code という優秀な相棒</span>が、全部やってくれます。
+    </p>
+    <p class="punch">90分で、<span class="nb">動くアプリ</span>を<br>作って持ち帰る<span class="gold">。</span></p>
+  </div>
+</section>
+
+<!-- ============ 4. 経営者の算数（数字エビデンス） ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The Math</span>
+    <h2>経営者の算数。</h2>
+    <p class="lead">毎日の手作業をひとつ、AIで作ったアプリに任せる。<br>たったそれだけで、いくら得するのか——計算例で見てみましょう。<br><small>※月給35万円の社員（月20日×8時間＝160時間勤務）で、毎日30分が浮いた場合の試算です。</small></p>
+
+    <div class="math-grid">
+      <div class="math-row"><span class="k">社員の時給<small>（35万円 ÷ 160時間）</small></span><span class="v"><span class="nb">約 2,188円</span></span></div>
+      <div class="math-row"><span class="k">浮いた30分の価値<small>（1日あたり）</small></span><span class="v"><span class="nb">約 1,094円</span></span></div>
+      <div class="math-row"><span class="k">1ヶ月ぶん<small>（20日で計算）</small></span><span class="v"><span class="nb">約 21,900円</span></span></div>
+      <div class="math-row hl"><span class="k">社員1人 → 年間</span><span class="v"><span class="nb">約 26万円</span></span></div>
+      <div class="math-row hl"><span class="k">社員10人 → 年間</span><span class="v"><span class="nb">約 262万円</span></span></div>
+    </div>
+    <p class="math-note">※これは「たった1つの手作業を、30分ぶんアプリに任せた場合」の計算例です。任せる作業を増やせば、効果はもっと大きくなります。（実際の効果を保証するものではありません）</p>
+    <p class="math-punch">たった30分の自動化で、<br>毎年ほぼ<span class="gold nb">月給1ヶ月分</span>が戻る計算。</p>
+    <p class="math-punch2"><span class="nb">受講料9,800円は、</span><span class="nb">初週で回収できる計算です。</span></p>
+
+    <div class="cta-wrap">
+      <a class="cta-btn gold" href="https://lin.ee/WjrbAkT" target="_blank" rel="noopener">
+        <svg class="lineico" viewBox="0 0 24 24" fill="#f5b942"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.33.07.77.22.88.5.1.26.06.66.03.92l-.14.86c-.04.26-.2 1.02.89.56s5.88-3.46 8.02-5.93C21.36 13.4 22 11.83 22 10.13 22 5.64 17.52 2 12 2z"/></svg>
+        LINEで申し込む（友だち追加）
+      </a>
+      <p class="cta-micro"><b>登録無料・30秒で友だち追加</b>／先着5名で締め切ります</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap-rule"><hr class="goldrule"></div>
+
+<!-- ============ 5. 当日やること5ステップ ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">90 Min</span>
+    <h2>当日やること。</h2>
+    <p class="lead">難しい座学はナシ。手を動かして、動くアプリを作って帰ります。（全5ステップ）</p>
+    <div class="steps">
+      <div class="step"><div class="n">1<small>Step</small></div><div><h4>考え方を知る</h4><p>経営者としての使い方——なぜやるのか（時間×お金×組織）を最初につかみます。</p></div></div>
+      <div class="step"><div class="n">2<small>Step</small></div><div><h4>実物デモを見る</h4><p>プログラミングを「書かずに」作ったアプリを、その場でお見せします。</p></div></div>
+      <div class="step"><div class="n">3<small>Step</small></div><div><h4>導入する</h4><p>アプリを入れるだけ。黒い画面には触らず、その場で全員が起動できるまでやります。</p></div></div>
+      <div class="step"><div class="n">4<small>Step</small></div><div><h4>アプリを作る</h4><p>日本語で話しかけて実装。うまく動かなければ、画面のスクショを貼って直させます。</p></div></div>
+      <div class="step"><div class="n">5<small>Step</small></div><div><h4>仕上げをする</h4><p>作って終わりにしない。「安全・速い・安い」まで、AIに面倒を見させる質問をお教えします。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap-rule"><hr class="goldrule"></div>
+
+<!-- ============ 6. 作れるアプリの具体例（モックアップ活用） ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Examples</span>
+    <h2>持ち帰るのは、<br>これです。</h2>
+    <p class="lead">むずかしそうに見えて、どれも「日本語で頼むだけ」で作れます。<br>あなたの会社の“毎日の面倒”を、そのまま動くアプリにできます。</p>
+
+    <div class="mock">
+      <img src="https://haracchi1202.github.io/seminar-lp-ab/v3/assets/b_app_mockup.jpg"
+           alt="ノートPCとスマホに表示された、実際に作れるダッシュボードアプリの実機イメージ" loading="lazy">
+    </div>
+    <p class="mock-cap">▲ 実際に作れるアプリのイメージ（ノートPC・スマホの両方で動きます）</p>
+
+    <div class="apps">
+      <div class="app"><b>売上・入出金の月次集計</b><span>例えば、バラバラのエクセルを読み込んで、月ごとの合計や差額を自動でまとめる。</span></div>
+      <div class="app"><b>日報や報告メールの自動作成</b><span>例えば、要点を入れるだけで、送れる文章のかたちに整えてくれる。</span></div>
+      <div class="app"><b>請求書の読み取り・集計</b><span>例えば、請求書の画像から取引先名・金額・支払月を読み取ってリストにする。</span></div>
+      <div class="app"><b>問い合わせ返信文の下書き</b><span>例えば、お客様からの質問に対する返信のたたき台を、その場で用意する。</span></div>
+    </div>
+    <p class="apps-note">※ここに挙げたのは一例です。「うちの場合はこう使いたい」を当日そのまま形にできます。</p>
+  </div>
+</section>
+
+<div class="wrap-rule"><hr class="goldrule"></div>
+
+<!-- ============ 7. 講師ストーリー ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Instructor</span>
+    <h2>講師紹介。</h2>
+    <div class="profile">
+      <img src="https://haracchi1202.github.io/seminar-lp-ab/v3/assets/profile.jpg" alt="講師 原敏史" loading="lazy">
+      <div>
+        <p class="role">講師</p>
+        <p class="name">原 敏史 <small>メイドバイジャパン代表</small></p>
+        <p class="catch"><span class="g">「</span>非エンジニア社長が実践したことだけ教えます！<span class="g">」</span></p>
+      </div>
+    </div>
+    <blockquote>
+      私はエンジニアではありません。正直、専門用語の意味もほとんどわかっていません。<br>
+      それでも、日本語でお願いするだけで、自分の会社で使うアプリを何個も作ってきました。<br>
+      「意味はわからないけど、作れる」——これは大げさな話ではなく、私自身が現場でやってきた事実です。<br>
+      むずかしい理屈は抜きにして、実際に私がやったことだけを、そのままお伝えします。
+    </blockquote>
+  </div>
+</section>
+
+<div class="wrap-rule"><hr class="goldrule"></div>
+
+<!-- ============ 8. FAQ（不安払拭） ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>よくある質問。</h2>
+    <p class="lead">申し込む前の「これ大丈夫かな？」に、正直にお答えします。</p>
+    <div class="faq">
+      <details>
+        <summary>パソコンが苦手でも大丈夫ですか？</summary>
+        <p class="a">大丈夫です。いわゆる「黒い画面」には触りません。当日は講師がそばでサポートしますので、操作でつまずいても安心してください。</p>
+      </details>
+      <details>
+        <summary>プログラミング未経験でも作れますか？</summary>
+        <p class="a">作れます。やることは「日本語で話しかけるだけ」。むずかしいコードを書く必要はありません。講師自身も非エンジニアで、同じやり方でアプリを作っています。</p>
+      </details>
+      <details>
+        <summary>オンラインでも同じ内容ですか？</summary>
+        <p class="a">はい。全2回とも内容は同じで、オンラインでのご参加も可能です。会場に来られない方はオンラインをお選びください。</p>
+      </details>
+      <details>
+        <summary>90分で本当に作れますか？</summary>
+        <p class="a">作れます。この講座は「知識を聞いて終わり」ではなく、その場で動くアプリを実際に作って持ち帰るための時間です。</p>
+      </details>
+      <details>
+        <summary>費用は9,800円だけですか？</summary>
+        <p class="a">受講料は9,800円（税込）のみです。別途、ご自身の「Claude Pro」アカウント（AIを使うための月額サービス）が必要になります。</p>
+      </details>
+      <details>
+        <summary>支払い方法は？</summary>
+        <p class="a">お申し込み後、LINEでPayPayのお支払いリンクをお送りします。お支払いの確認をもって、ご参加が確定します。</p>
+      </details>
+      <details>
+        <summary>途中で分からなくなったら？</summary>
+        <p class="a">少人数の講座なので、その場ですぐに質問できます。置いていかれる心配はありません。分からないところは一緒に解決しながら進めます。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="wrap-rule"><hr class="goldrule"></div>
+
+<!-- ============ 9. 開催概要 ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Outline</span>
+    <h2>開催概要。</h2>
+    <div class="outline">
+      <dl>
+        <dt>日時</dt><dd>2026年 7/28(火)・7/31(金)　各19:00〜20:30<br><small>※各回90分・全2回／内容は同じ</small></dd>
+        <dt>会場</dt><dd>赤羽橋・ベクトルコア（対面）／オンライン可<br><small>※詳しい住所は申込後にLINEでご案内</small></dd>
+        <dt>定員</dt><dd>対面 5名（少人数）／ オンライン 無制限</dd>
+        <dt>参加費</dt><dd>通常19,800円 → <span class="g">9,800円（税込）</span></dd>
+        <dt>持ち物</dt><dd>ノートPC ／ Claude Pro アカウント<br><small>※準備が不安な方も当日サポートします</small></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. 限定・緊急性 ============ -->
+<section class="urgent">
+  <div class="wrap">
+    <span class="badge">対面5名・先着</span>
+    <p class="big">
+      いまだけ、<br>
+      <span class="g nb">9,800円</span>。<br>
+      <span style="font-size:.7em;color:var(--sub)">（通常 19,800円）</span>
+    </p>
+    <p>
+      少人数でしっかり見るため、<span class="nb">対面はたった5名</span>。<br>
+      期間限定の価格も、定員に達し次第そこで終了です。<br>
+      「あとで」と思っているうちに、席は埋まります。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 11. 申し込みCTA（最終） ============ -->
+<section class="cta-final" id="apply">
+  <div class="wrap">
+    <span class="eyebrow">Apply</span>
+    <h2>お申し込み。</h2>
+    <p class="lead">お申し込みは LINE公式アカウント から。かんたん3ステップです。</p>
+    <div class="flow">
+      <div class="fstep"><div class="n">1</div><p>LINEで友だち追加<small>下のボタンから、まず友だち追加してください（登録無料・30秒）。</small></p></div>
+      <div class="fstep"><div class="n">2</div><p>参加する日程を選ぶ<small>7/28(火) か 7/31(金)、どちらの回に参加するかをLINEでお返事ください。</small></p></div>
+      <div class="fstep"><div class="n">3</div><p>PayPayでお支払い → 確定<small>LINEに届く支払いリンクから9,800円（税込）をお支払い。確認後、当日の集合場所をご案内します。</small></p></div>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta-btn" href="https://lin.ee/WjrbAkT" target="_blank" rel="noopener">
+        <svg class="lineico" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.33.07.77.22.88.5.1.26.06.66.03.92l-.14.86c-.04.26-.2 1.02.89.56s5.88-3.46 8.02-5.93C21.36 13.4 22 11.83 22 10.13 22 5.64 17.52 2 12 2z"/></svg>
+        LINEで申し込む（友だち追加）
+      </a>
+      <p class="cta-micro"><b>登録無料・30秒で友だち追加</b>／定員に達し次第、締め切ります</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>即実践 経営者のための Claude Code講座</b> ／ メイドバイジャパン<br>
+  © 2026 Made by Japan
+</footer>
+
+<!-- スマホ用 追従バー -->
+<div class="sticky">
+  <div class="barwrap">
+    <p class="barmicro"><b>期間限定 9,800円</b>（税込）・対面5名 先着</p>
+    <a class="cta-btn" style="padding:14px 22px" href="https://lin.ee/WjrbAkT" target="_blank" rel="noopener">
+      <svg class="lineico" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.35 8.03.33.07.77.22.88.5.1.26.06.66.03.92l-.14.86c-.04.26-.2 1.02.89.56s5.88-3.46 8.02-5.93C21.36 13.4 22 11.83 22 10.13 22 5.64 17.52 2 12 2z"/></svg>
+      LINEで申し込む（30秒）
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
